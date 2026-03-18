@@ -1,0 +1,147 @@
+import type { Pattern } from '@/engine/PatternEngine';
+
+/**
+ * Offline fallback patterns — used when the server is unreachable.
+ * 10 hand-crafted patterns across difficulties 1-10.
+ */
+export const FALLBACK_PATTERNS: Pattern[] = [
+  {
+    sequence: [
+      { cell: 0, color: '#00f5d4', displayTime: 800 },
+      { cell: 5, color: '#f72585', displayTime: 800 },
+      { cell: 10, color: '#ffd166', displayTime: 800 },
+    ],
+    totalCells: 3,
+    estimatedDifficulty: 1,
+    reasoning: 'Simple diagonal for beginners',
+  },
+  {
+    sequence: [
+      { cell: 0, color: '#00f5d4', displayTime: 750 },
+      { cell: 1, color: '#00f5d4', displayTime: 750 },
+      { cell: 2, color: '#f72585', displayTime: 750 },
+      { cell: 3, color: '#f72585', displayTime: 750 },
+    ],
+    totalCells: 4,
+    estimatedDifficulty: 2,
+    reasoning: 'Top row sweep with color pairs',
+  },
+  {
+    sequence: [
+      { cell: 0, color: '#00f5d4', displayTime: 700 },
+      { cell: 3, color: '#f72585', displayTime: 700 },
+      { cell: 12, color: '#ffd166', displayTime: 700 },
+      { cell: 15, color: '#7b2fff', displayTime: 700 },
+      { cell: 5, color: '#00f5d4', displayTime: 700 },
+    ],
+    totalCells: 5,
+    estimatedDifficulty: 3,
+    reasoning: 'Four corners then center — spatial memory test',
+  },
+  {
+    sequence: [
+      { cell: 1, color: '#f72585', displayTime: 650 },
+      { cell: 6, color: '#00f5d4', displayTime: 650 },
+      { cell: 11, color: '#f72585', displayTime: 650 },
+      { cell: 14, color: '#ffd166', displayTime: 650 },
+      { cell: 9, color: '#7b2fff', displayTime: 650 },
+      { cell: 4, color: '#00f5d4', displayTime: 650 },
+    ],
+    totalCells: 6,
+    estimatedDifficulty: 4,
+    reasoning: 'Zigzag pattern requiring diagonal tracking',
+  },
+  {
+    sequence: [
+      { cell: 0, color: '#00f5d4', displayTime: 600 },
+      { cell: 1, color: '#00f5d4', displayTime: 600 },
+      { cell: 5, color: '#f72585', displayTime: 600 },
+      { cell: 4, color: '#f72585', displayTime: 600 },
+      { cell: 8, color: '#ffd166', displayTime: 550 },
+      { cell: 9, color: '#ffd166', displayTime: 550 },
+    ],
+    totalCells: 6,
+    estimatedDifficulty: 5,
+    reasoning: 'L-shape with speed increase mid-pattern',
+  },
+  {
+    sequence: [
+      { cell: 5, color: '#7b2fff', displayTime: 550 },
+      { cell: 6, color: '#00f5d4', displayTime: 550 },
+      { cell: 9, color: '#f72585', displayTime: 500 },
+      { cell: 10, color: '#ffd166', displayTime: 500 },
+      { cell: 1, color: '#7b2fff', displayTime: 450 },
+      { cell: 2, color: '#00f5d4', displayTime: 450 },
+      { cell: 13, color: '#f72585', displayTime: 450 },
+    ],
+    totalCells: 7,
+    estimatedDifficulty: 6,
+    reasoning: 'Center box expanding outward with accelerating tempo',
+  },
+  {
+    sequence: [
+      { cell: 3, color: '#f72585', displayTime: 500 },
+      { cell: 7, color: '#00f5d4', displayTime: 450 },
+      { cell: 11, color: '#ffd166', displayTime: 450 },
+      { cell: 15, color: '#7b2fff', displayTime: 400 },
+      { cell: 14, color: '#f72585', displayTime: 400 },
+      { cell: 13, color: '#00f5d4', displayTime: 350 },
+      { cell: 12, color: '#ffd166', displayTime: 350 },
+      { cell: 8, color: '#7b2fff', displayTime: 350 },
+    ],
+    totalCells: 8,
+    estimatedDifficulty: 7,
+    reasoning: 'Clockwise spiral from top-right with decreasing display time',
+  },
+  {
+    sequence: [
+      { cell: 0, color: '#00f5d4', displayTime: 400 },
+      { cell: 15, color: '#f72585', displayTime: 400 },
+      { cell: 3, color: '#ffd166', displayTime: 350 },
+      { cell: 12, color: '#7b2fff', displayTime: 350 },
+      { cell: 5, color: '#00f5d4', displayTime: 350 },
+      { cell: 10, color: '#f72585', displayTime: 300 },
+      { cell: 6, color: '#ffd166', displayTime: 300 },
+      { cell: 9, color: '#7b2fff', displayTime: 300 },
+      { cell: 7, color: '#00f5d4', displayTime: 300 },
+    ],
+    totalCells: 9,
+    estimatedDifficulty: 8,
+    reasoning: 'Mirror pattern — opposite corners converging to center at high speed',
+  },
+  {
+    sequence: [
+      { cell: 0, color: '#f72585', displayTime: 350 },
+      { cell: 5, color: '#00f5d4', displayTime: 300 },
+      { cell: 10, color: '#7b2fff', displayTime: 300 },
+      { cell: 15, color: '#ffd166', displayTime: 250 },
+      { cell: 3, color: '#f72585', displayTime: 250 },
+      { cell: 6, color: '#00f5d4', displayTime: 250 },
+      { cell: 9, color: '#7b2fff', displayTime: 250 },
+      { cell: 12, color: '#ffd166', displayTime: 250 },
+      { cell: 1, color: '#f72585', displayTime: 200 },
+      { cell: 14, color: '#00f5d4', displayTime: 200 },
+    ],
+    totalCells: 10,
+    estimatedDifficulty: 9,
+    reasoning: 'Cross-diagonal with rapid tempo escalation',
+  },
+  {
+    sequence: [
+      { cell: 5, color: '#00f5d4', displayTime: 300 },
+      { cell: 1, color: '#f72585', displayTime: 250 },
+      { cell: 6, color: '#ffd166', displayTime: 250 },
+      { cell: 9, color: '#7b2fff', displayTime: 250 },
+      { cell: 14, color: '#00f5d4', displayTime: 200 },
+      { cell: 10, color: '#f72585', displayTime: 200 },
+      { cell: 7, color: '#ffd166', displayTime: 200 },
+      { cell: 4, color: '#7b2fff', displayTime: 200 },
+      { cell: 11, color: '#00f5d4', displayTime: 200 },
+      { cell: 2, color: '#f72585', displayTime: 200 },
+      { cell: 13, color: '#ffd166', displayTime: 200 },
+    ],
+    totalCells: 11,
+    estimatedDifficulty: 10,
+    reasoning: 'Chaotic scatter at maximum speed — tests elite recall ability',
+  },
+];

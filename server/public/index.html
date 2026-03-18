@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EchoShift — Memoriza. Replica. Domina.</title>
+  <meta name="description" content="Un puzzle de patrones con estética cyberpunk. Memoriza secuencias, consigue combos épicos y compite en leaderboards globales.">
+  <meta property="og:title" content="EchoShift — Memoriza. Replica. Domina.">
+  <meta property="og:description" content="Un puzzle de patrones con estética cyberpunk para iOS y Android.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #07080f;
+      color: #fff;
+      font-family: system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: 12px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .logo-accent {
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: 12px;
+      color: #00f5d4;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(0, 245, 212, 0.4);
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: #666;
+      letter-spacing: 4px;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+
+    .description {
+      font-size: 18px;
+      color: #999;
+      max-width: 480px;
+      margin-top: 32px;
+      line-height: 1.6;
+    }
+
+    .store-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(13, 14, 26, 0.8);
+      border: 1.5px solid rgba(0, 245, 212, 0.25);
+      border-radius: 14px;
+      padding: 14px 28px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .store-btn:hover {
+      border-color: #00f5d4;
+      transform: translateY(-2px);
+    }
+
+    .store-btn .store-label {
+      font-size: 10px;
+      color: #666;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .store-btn .store-name {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    /* Features */
+    .features {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .features-title {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+      letter-spacing: 6px;
+      margin-bottom: 48px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: rgba(13, 14, 26, 0.7);
+      border: 1px solid rgba(26, 27, 46, 0.8);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .feature-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: #00f5d4;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* Modes */
+    .modes {
+      padding: 60px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .modes-title {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+      letter-spacing: 6px;
+      margin-bottom: 36px;
+    }
+
+    .modes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .mode-card {
+      background: rgba(13, 14, 26, 0.7);
+      border: 1px solid rgba(26, 27, 46, 0.8);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .mode-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .mode-name {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin-bottom: 6px;
+    }
+
+    .mode-desc {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 48px 24px;
+      border-top: 1px solid rgba(26, 27, 46, 0.5);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: #555;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #00f5d4; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #333;
+    }
+
+    @media (max-width: 600px) {
+      .logo, .logo-accent { font-size: 36px; letter-spacing: 8px; }
+      .description { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="logo">ECHO</div>
+    <div class="logo-accent">SHIFT</div>
+    <p class="tagline">MEMORIZA. REPLICA. DOMINA.</p>
+    <p class="description">
+      Un puzzle de patrones con estética cyberpunk. Memoriza secuencias luminosas,
+      consigue combos épicos y compite contra jugadores de todo el mundo.
+    </p>
+    <div class="store-buttons">
+      <a class="store-btn" href="#" id="ios-btn">
+        <div>
+          <div class="store-label">Descargar en</div>
+          <div class="store-name">App Store</div>
+        </div>
+      </a>
+      <a class="store-btn" href="#" id="android-btn">
+        <div>
+          <div class="store-label">Disponible en</div>
+          <div class="store-name">Google Play</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2 class="features-title">FEATURES</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="color: #00f5d4">&#9673;</div>
+        <h3 class="feature-name">IA ADAPTATIVA</h3>
+        <p class="feature-desc">Claude AI genera patrones dinámicos que se adaptan a tu nivel de habilidad en tiempo real.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: #ffd166">&#9889;</div>
+        <h3 class="feature-name" style="color: #ffd166">COMBOS x10</h3>
+        <p class="feature-desc">Sistema de combos que multiplica tu puntaje hasta x10. Cada acierto cuenta.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: #f72585">&#9876;</div>
+        <h3 class="feature-name" style="color: #f72585">MODO DUO</h3>
+        <p class="feature-desc">Compite 1v1 en tiempo real contra amigos. Mismo patrón, el mejor tiempo gana.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: #7b2fff">&#9836;</div>
+        <h3 class="feature-name" style="color: #7b2fff">AUDIO GENERATIVO</h3>
+        <p class="feature-desc">Música que reacciona a tu combo. El beat se intensifica mientras mejor juegas.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: #00f5d4">&#9733;</div>
+        <h3 class="feature-name">5 POWER-UPS</h3>
+        <p class="feature-desc">Freeze, Hint, Undo, Slow y Shield. Usa Echoes estratégicamente para sobrevivir.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="color: #ffd166">&#9823;</div>
+        <h3 class="feature-name" style="color: #ffd166">LEADERBOARD</h3>
+        <p class="feature-desc">Rankings globales y entre amigos. Daily challenges diarios donde todos juegan el mismo patrón.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modes -->
+  <section class="modes">
+    <h2 class="modes-title">MODOS DE JUEGO</h2>
+    <div class="modes-grid">
+      <div class="mode-card">
+        <div class="mode-icon">&#8734;</div>
+        <h3 class="mode-name" style="color: #00f5d4">ENDLESS</h3>
+        <p class="mode-desc">Sin límites. Juega hasta que falles.</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">&#9889;</div>
+        <h3 class="mode-name" style="color: #ffd166">BLITZ</h3>
+        <p class="mode-desc">60 segundos. Máximo puntaje.</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">&#9670;</div>
+        <h3 class="mode-name" style="color: #f72585">DAILY</h3>
+        <p class="mode-desc">Un patrón al día. Todos compiten.</p>
+      </div>
+      <div class="mode-card">
+        <div class="mode-icon">&#9876;</div>
+        <h3 class="mode-name" style="color: #f72585">DUO</h3>
+        <p class="mode-desc">1v1 en tiempo real con amigos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/privacy.html">Privacidad</a>
+      <a href="/terms.html">Términos</a>
+      <a href="mailto:hello@echoshift.app">Contacto</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 EchoShift. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "EchoShift",
+    "slug": "echoshift",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icons/icon.png",
+    "scheme": "echoshift",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/icons/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#07080f"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.echoshift.app",
+      "buildNumber": "1",
+      "associatedDomains": ["applinks:echoshift.app"],
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#07080f"
+      },
+      "package": "com.echoshift.app",
+      "versionCode": 1,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "echoshift.app",
+              "pathPrefix": "/challenge"
+            },
+            {
+              "scheme": "https",
+              "host": "echoshift.app",
+              "pathPrefix": "/duo"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    "plugins": [
+      "expo-router",
+      "expo-asset",
+      "expo-font",
+      "expo-secure-store"
+    ]
+  }
+}
