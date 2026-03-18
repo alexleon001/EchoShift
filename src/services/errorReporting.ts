@@ -20,26 +20,24 @@ let sentryInitialized = false;
 export function initErrorReporting(): void {
   if (sentryInitialized) return;
 
-  // When Sentry is installed, uncomment:
-  // try {
-  //   const Sentry = require('@sentry/react-native');
-  //   Sentry.init({
-  //     dsn: config.sentryDsn,
-  //     environment: config.environment,
-  //     enabled: config.environment !== 'development',
-  //     tracesSampleRate: 0.2,
-  //     beforeSend(event: any) {
-  //       // Don't send events from dev
-  //       if (__DEV__) return null;
-  //       return event;
-  //     },
-  //   });
-  //   sentryInitialized = true;
-  // } catch {
-  //   // Sentry not installed — fallback to console
-  // }
+  try {
+    const Sentry = require('@sentry/react-native');
+    Sentry.init({
+      dsn: config.sentryDsn,
+      environment: config.environment,
+      enabled: config.environment !== 'development',
+      tracesSampleRate: 0.2,
+      beforeSend(event: any) {
+        if (__DEV__) return null;
+        return event;
+      },
+    });
+    sentryInitialized = true;
+  } catch {
+    // @sentry/react-native not installed — fallback to console
+  }
 
-  if (__DEV__) {
+  if (__DEV__ && !sentryInitialized) {
     console.log('[ErrorReporting] Using console logging (Sentry not configured)');
   }
 }
@@ -53,18 +51,17 @@ export function captureException(error: Error, context?: Record<string, any>): v
     return;
   }
 
-  // When Sentry is installed:
-  // try {
-  //   const Sentry = require('@sentry/react-native');
-  //   if (context) {
-  //     Sentry.withScope((scope: any) => {
-  //       scope.setExtras(context);
-  //       Sentry.captureException(error);
-  //     });
-  //   } else {
-  //     Sentry.captureException(error);
-  //   }
-  // } catch {}
+  try {
+    const Sentry = require('@sentry/react-native');
+    if (context) {
+      Sentry.withScope((scope: any) => {
+        scope.setExtras(context);
+        Sentry.captureException(error);
+      });
+    } else {
+      Sentry.captureException(error);
+    }
+  } catch {}
 }
 
 /**
@@ -76,24 +73,22 @@ export function addBreadcrumb(message: string, data?: Record<string, any>): void
     return;
   }
 
-  // When Sentry is installed:
-  // try {
-  //   const Sentry = require('@sentry/react-native');
-  //   Sentry.addBreadcrumb({
-  //     message,
-  //     data,
-  //     level: 'info',
-  //   });
-  // } catch {}
+  try {
+    const Sentry = require('@sentry/react-native');
+    Sentry.addBreadcrumb({
+      message,
+      data,
+      level: 'info',
+    });
+  } catch {}
 }
 
 /**
  * Set user context for error reports.
  */
 export function setUser(id: string, username?: string): void {
-  // When Sentry is installed:
-  // try {
-  //   const Sentry = require('@sentry/react-native');
-  //   Sentry.setUser({ id, username });
-  // } catch {}
+  try {
+    const Sentry = require('@sentry/react-native');
+    Sentry.setUser({ id, username });
+  } catch {}
 }

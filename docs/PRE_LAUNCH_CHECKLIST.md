@@ -23,7 +23,7 @@
 ## App — Configuración
 - [ ] Actualizar `EXPO_PUBLIC_API_BASE_URL` a la URL de Railway
 - [ ] Actualizar `EXPO_PUBLIC_SUPABASE_URL` y `EXPO_PUBLIC_SUPABASE_ANON_KEY`
-- [ ] Revertir echoes iniciales de 999 a 100 en `playerStore.ts`
+- [x] Revertir echoes iniciales de 999 a 100 en `playerStore.ts`
 - [ ] Configurar RevenueCat:
   - [ ] Crear app en RevenueCat dashboard
   - [ ] Agregar API keys en `.env`: `EXPO_PUBLIC_REVENUECAT_IOS_KEY`, `EXPO_PUBLIC_REVENUECAT_ANDROID_KEY`
@@ -34,11 +34,11 @@
   - [ ] Agregar ad unit ID en el código
 - [ ] Configurar Sentry:
   - [ ] Crear proyecto en Sentry
-  - [ ] Descomentar código en `src/services/errorReporting.ts`
+  - [x] Descomentar código en `src/services/errorReporting.ts`
   - [ ] Agregar DSN en `.env`
 
 ## Builds
-- [ ] `npm install` en `server/` (instalar @fastify/websocket, @fastify/static)
+- [x] `npm install` en `server/` (instalar @fastify/websocket, @fastify/static)
 - [ ] `expo install expo-notifications` (para builds nativos)
 - [ ] `eas build --platform ios --profile production`
 - [ ] `eas build --platform android --profile production`

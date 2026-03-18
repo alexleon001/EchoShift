@@ -40,7 +40,7 @@ export const usePlayerStore = create<PlayerState>((set, get) => ({
   avatarUrl: null,
   rank: 'Bronce',
   totalXp: 0,
-  echoes: 999,
+  echoes: 100,
   gamesPlayed: 0,
   isAuthenticated: false,
   isLoading: true,

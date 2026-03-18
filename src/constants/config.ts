@@ -6,6 +6,7 @@ export const config = {
   supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY ?? '',
   revenueCatIosKey: process.env.EXPO_PUBLIC_REVENUECAT_IOS_KEY ?? '',
   revenueCatAndroidKey: process.env.EXPO_PUBLIC_REVENUECAT_ANDROID_KEY ?? '',
+  sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN ?? '',
   environment: (process.env.EXPO_PUBLIC_ENVIRONMENT ?? 'development') as
     | 'development'
     | 'staging'
@@ -17,5 +18,5 @@ export const FEATURE_FLAGS = {
   blitzModeEnabled: true,
   duoModeEnabled: true,
   creativeModeEnabled: false,
-  adsEnabled: false,
+  adsEnabled: true,
 } as const;
